@@ -1,0 +1,351 @@
+# SyllaboKids - Contenu pédagogique par semaines
+# Format YAML pour automatisation
+
+weeks:
+  - id: 1
+    title: "Découverte des sons"
+    badge:
+      name: "Explorateur des sons"
+      icon: "🔊"
+    sessions:
+      - id: 1
+        title: "Écoute et compte"
+        type: "syllable_count"
+        words:
+          - word: "papa"
+            syllables: ["pa", "pa"]
+            category: "famille"
+            emoji: "👨"
+          - word: "mama"
+            syllables: ["ma", "ma"]
+            category: "famille"
+            emoji: "👩"
+          - word: "bébé"
+            syllables: ["bé", "bé"]
+            category: "famille"
+            emoji: "👶"
+          - word: "dodo"
+            syllables: ["do", "do"]
+            category: "actions"
+            emoji: "😴"
+      - id: 2
+        title: "Trouve la première"
+        type: "first_syllable"
+        words:
+          - word: "toto"
+            syllables: ["to", "to"]
+            category: "prenom"
+            emoji: "👦"
+          - word: "lolo"
+            syllables: ["lo", "lo"]
+            category: "prenom"
+            emoji: "🧒"
+          - word: "mimi"
+            syllables: ["mi", "mi"]
+            category: "prenom"
+            emoji: "👧"
+          - word: "fifi"
+            syllables: ["fi", "fi"]
+            category: "prenom"
+            emoji: "🧑"
+      - id: 3
+        title: "Construis les mots"
+        type: "build_word"
+        words:
+          - word: "nana"
+            syllables: ["na", "na"]
+            category: "prenom"
+            emoji: "👱"
+          - word: "dada"
+            syllables: ["da", "da"]
+            category: "animaux"
+            emoji: "🐴"
+          - word: "riri"
+            syllables: ["ri", "ri"]
+            category: "prenom"
+            emoji: "🧒"
+          - word: "vélo"
+            syllables: ["vé", "lo"]
+            category: "transport"
+            emoji: "🚲"
+      - id: 4
+        title: "Évaluation"
+        type: "mixed"
+        words:
+          - word: "papa"
+            syllables: ["pa", "pa"]
+            category: "famille"
+            emoji: "👨"
+          - word: "mama"
+            syllables: ["ma", "ma"]
+            category: "famille"
+            emoji: "👩"
+          - word: "toto"
+            syllables: ["to", "to"]
+            category: "prenom"
+            emoji: "👦"
+          - word: "vélo"
+            syllables: ["vé", "lo"]
+            category: "transport"
+            emoji: "🚲"
+
+  - id: 2
+    title: "Chasseur de syllabes"
+    badge:
+      name: "Détective de syllabes"
+      icon: "🔍"
+    sessions:
+      - id: 1
+        title: "Robot parleur"
+        type: "fusion"
+        words:
+          - word: "photo"
+            syllables: ["pho", "to"]
+            category: "objets"
+            emoji: "📷"
+          - word: "moto"
+            syllables: ["mo", "to"]
+            category: "transport"
+            emoji: "🏍️"
+          - word: "solo"
+            syllables: ["so", "lo"]
+            category: "musique"
+            emoji: "🎵"
+          - word: "lama"
+            syllables: ["la", "ma"]
+            category: "animaux"
+            emoji: "🦙"
+      - id: 2
+        title: "Compte et construis"
+        type: "mixed"
+        words:
+          - word: "tomate"
+            syllables: ["to", "ma", "te"]
+            category: "nourriture"
+            emoji: "🍅"
+          - word: "salade"
+            syllables: ["sa", "la", "de"]
+            category: "nourriture"
+            emoji: "🥗"
+          - word: "robot"
+            syllables: ["ro", "bot"]
+            category: "jouets"
+            emoji: "🤖"
+          - word: "lavabo"
+            syllables: ["la", "va", "bo"]
+            category: "maison"
+            emoji: "🚰"
+      - id: 3
+        title: "Chasse aux syllabes"
+        type: "first_syllable"
+        words:
+          - word: "bateau"
+            syllables: ["ba", "teau"]
+            category: "transport"
+            emoji: "⛵"
+          - word: "soleil"
+            syllables: ["so", "leil"]
+            category: "nature"
+            emoji: "☀️"
+          - word: "malade"
+            syllables: ["ma", "la", "de"]
+            category: "etats"
+            emoji: "🤒"
+          - word: "domino"
+            syllables: ["do", "mi", "no"]
+            category: "jeux"
+            emoji: "🎲"
+      - id: 4
+        title: "Évaluation"
+        type: "mixed"
+        words:
+          - word: "tomate"
+            syllables: ["to", "ma", "te"]
+            category: "nourriture"
+            emoji: "🍅"
+          - word: "robot"
+            syllables: ["ro", "bot"]
+            category: "jouets"
+            emoji: "🤖"
+          - word: "photo"
+            syllables: ["pho", "to"]
+            category: "objets"
+            emoji: "📷"
+          - word: "lavabo"
+            syllables: ["la", "va", "bo"]
+            category: "maison"
+            emoji: "🚰"
+
+  - id: 3
+    title: "Construction de mots"
+    badge:
+      name: "Architecte de mots"
+      icon: "🏗️"
+    sessions:
+      - id: 1
+        title: "Grands mots"
+        type: "syllable_count"
+        words:
+          - word: "banane"
+            syllables: ["ba", "na", "ne"]
+            category: "nourriture"
+            emoji: "🍌"
+          - word: "citron"
+            syllables: ["ci", "tron"]
+            category: "nourriture"
+            emoji: "🍋"
+          - word: "melon"
+            syllables: ["me", "lon"]
+            category: "nourriture"
+            emoji: "🍈"
+          - word: "salon"
+            syllables: ["sa", "lon"]
+            category: "maison"
+            emoji: "🛋️"
+      - id: 2
+        title: "Trouve et construis"
+        type: "mixed"
+        words:
+          - word: "radis"
+            syllables: ["ra", "dis"]
+            category: "nourriture"
+            emoji: "🌰"
+          - word: "limonade"
+            syllables: ["li", "mo", "na", "de"]
+            category: "nourriture"
+            emoji: "🍋"
+          - word: "carotte"
+            syllables: ["ca", "ro", "tte"]
+            category: "nourriture"
+            emoji: "🥕"
+          - word: "cerise"
+            syllables: ["ce", "ri", "se"]
+            category: "nourriture"
+            emoji: "🍒"
+      - id: 3
+        title: "Robot avancé"
+        type: "fusion"
+        words:
+          - word: "orange"
+            syllables: ["o", "ran", "ge"]
+            category: "nourriture"
+            emoji: "🍊"
+          - word: "limace"
+            syllables: ["li", "ma", "ce"]
+            category: "animaux"
+            emoji: "🐌"
+          - word: "tulipe"
+            syllables: ["tu", "li", "pe"]
+            category: "nature"
+            emoji: "🌷"
+          - word: "pilote"
+            syllables: ["pi", "lo", "te"]
+            category: "metiers"
+            emoji: "🧑‍✈️"
+      - id: 4
+        title: "Évaluation"
+        type: "mixed"
+        words:
+          - word: "banane"
+            syllables: ["ba", "na", "ne"]
+            category: "nourriture"
+            emoji: "🍌"
+          - word: "carotte"
+            syllables: ["ca", "ro", "tte"]
+            category: "nourriture"
+            emoji: "🥕"
+          - word: "orange"
+            syllables: ["o", "ran", "ge"]
+            category: "nourriture"
+            emoji: "🍊"
+          - word: "tulipe"
+            syllables: ["tu", "li", "pe"]
+            category: "nature"
+            emoji: "🌷"
+
+  - id: 4
+    title: "Maîtrise niveau 1"
+    badge:
+      name: "Champion du mois 1"
+      icon: "🏆"
+    sessions:
+      - id: 1
+        title: "Défis variés"
+        type: "mixed"
+        words:
+          - word: "pirate"
+            syllables: ["pi", "ra", "te"]
+            category: "metiers"
+            emoji: "🏴‍☠️"
+          - word: "girafe"
+            syllables: ["gi", "ra", "fe"]
+            category: "animaux"
+            emoji: "🦒"
+          - word: "tortue"
+            syllables: ["tor", "tue"]
+            category: "animaux"
+            emoji: "🐢"
+          - word: "fenêtre"
+            syllables: ["fe", "nê", "tre"]
+            category: "maison"
+            emoji: "🪟"
+      - id: 2
+        title: "Grands défis"
+        type: "mixed"
+        words:
+          - word: "numéro"
+            syllables: ["nu", "mé", "ro"]
+            category: "nombres"
+            emoji: "🔢"
+          - word: "pantalon"
+            syllables: ["pan", "ta", "lon"]
+            category: "vetements"
+            emoji: "👖"
+          - word: "caméra"
+            syllables: ["ca", "mé", "ra"]
+            category: "objets"
+            emoji: "📹"
+          - word: "cinéma"
+            syllables: ["ci", "né", "ma"]
+            category: "loisirs"
+            emoji: "🎬"
+      - id: 3
+        title: "Révisions"
+        type: "mixed"
+        words:
+          - word: "animal"
+            syllables: ["a", "ni", "mal"]
+            category: "animaux"
+            emoji: "🐾"
+          - word: "ballon"
+            syllables: ["ba", "llon"]
+            category: "jouets"
+            emoji: "🎈"
+          - word: "biberon"
+            syllables: ["bi", "be", "ron"]
+            category: "bebe"
+            emoji: "🍼"
+          - word: "camion"
+            syllables: ["ca", "mion"]
+            category: "transport"
+            emoji: "🚚"
+      - id: 4
+        title: "Évaluation finale"
+        type: "mixed"
+        words:
+          - word: "pirate"
+            syllables: ["pi", "ra", "te"]
+            category: "metiers"
+            emoji: "🏴‍☠️"
+          - word: "pantalon"
+            syllables: ["pan", "ta", "lon"]
+            category: "vetements"
+            emoji: "👖"
+          - word: "animal"
+            syllables: ["a", "ni", "mal"]
+            category: "animaux"
+            emoji: "🐾"
+          - word: "camion"
+            syllables: ["ca", "mion"]
+            category: "transport"
+            emoji: "🚚"
