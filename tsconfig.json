@@ -24,10 +24,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@stores/*": ["src/stores/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@stores/*": ["src/stores/*"]
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": ["src"],

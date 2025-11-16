@@ -10,6 +10,6 @@ window.speechSynthesis = {
 } as any
 
 // Mock Service Worker
-navigator.serviceWorker = {
+(navigator as any).serviceWorker = {
   register: () => Promise.resolve(),
 } as any

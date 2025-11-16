@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { WORDS_DATABASE } from '@data/wordsDatabase'
 import { useSpeech } from '@hooks/useSpeech'
 import '../styles/components/ExerciseContainer.css'
@@ -13,7 +13,7 @@ export type ExerciseType =
 interface ExerciseContainerProps {
   words: string[]
   exerciseType: ExerciseType
-  onComplete: (score: number, attempts: number) => void
+  onComplete: (score: number) => void
   onSkip: () => void
 }
 
@@ -142,7 +142,7 @@ const ExerciseContainer: React.FC<ExerciseContainerProps> = ({
         }))
       } else {
         // Fin de l'exercice
-        onComplete(state.score + (isCorrect ? 1 : 0), state.attempts + 1)
+        onComplete(state.score + (isCorrect ? 1 : 0))
       }
     }, 2000)
   }

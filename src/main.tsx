@@ -9,7 +9,10 @@ import './styles/index.css'
  * ℹ️ DÉVELOPPEMENT (npm run dev) : SW désactivé
  */
 
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+// Déterminer l'environnement
+const isDev = !globalThis.window || (process.env.NODE_ENV === 'development')
+
+if ('serviceWorker' in navigator && !isDev) {
   // 🎯 PRODUCTION MODE : Enregistrer le Service Worker
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
@@ -21,7 +24,7 @@ if ('serviceWorker' in navigator && import.meta.env.PROD) {
         console.error('❌ Service Worker registration failed:', error)
       })
   })
-} else if (!import.meta.env.PROD) {
+} else if (isDev) {
   // ℹ️ DEVELOPMENT MODE : SW désactivé
   console.log('ℹ️ Service Worker disabled in development mode (npm run dev)')
   console.log('   To test SW, run: npm run build && npm run preview')

@@ -35,7 +35,7 @@ export const useSpeech = (): UseSpeechReturn => {
   }, [isSupported])
 
   // Chercher la meilleure voix française disponible
-  const getVoice = useCallback((lang: string = 'fr-FR') => {
+  const getVoice = useCallback(() => {
     if (!synth.current) return null
 
     const voices = synth.current.getVoices()
@@ -81,7 +81,7 @@ export const useSpeech = (): UseSpeechReturn => {
       utterance.volume = options.volume || 1
 
       // Chercher la voix
-      const voice = getVoice(utterance.lang)
+      const voice = getVoice()
       if (voice) {
         utterance.voice = voice
       }
