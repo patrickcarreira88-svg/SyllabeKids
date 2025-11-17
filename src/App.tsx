@@ -22,6 +22,7 @@ const App: React.FC = () => {
   const [currentWordIdx, setCurrentWordIdx] = useState(0)
   const [score, setScore] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+  const [selectedSyllables, setSelectedSyllables] = useState<string[]>([])  // ← NOUVEAU
 
   const availableProfiles: Profile[] = [
     { id: 1, name: 'Alice', avatar: '👧', level: 1 },
@@ -76,6 +77,7 @@ const App: React.FC = () => {
     setCurrentWordIdx(0)
     setScore(0)
     setSelectedAnswer(null)
+    setSelectedSyllables([])  // ← RESET
     setScreen('quiz')
   }
 
@@ -85,25 +87,54 @@ const App: React.FC = () => {
     let isCorrect = false
 
     if (selectedExercise === 0) {
+      // Exercice 1 : Compter les syllabes
       isCorrect = parseInt(answer) === currentWord.syllables.length
     } else if (selectedExercise === 1) {
+      // Exercice 2 : Première syllabe
       isCorrect = answer === currentWord.syllables[0]
+    } else if (selectedExercise === 2) {
+      // Exercice 3 : Construire le mot (cliquer les syllabes dans l'ordre)
+      const newSyllables = [...selectedSyllables, answer]
+      setSelectedSyllables(newSyllables)
+
+      // Vérifier si c'est la bonne syllabe
+      const expectedSyllable = currentWord.syllables[newSyllables.length - 1]
+      isCorrect = answer === expectedSyllable
+
+      // Si toutes les syllabes sont cliquées correctement
+      if (newSyllables.length === currentWord.syllables.length && isCorrect) {
+        setScore(score + 1)
+        setSelectedAnswer('COMPLETE')  // Flag pour afficher le succès
+        setTimeout(() => {
+          if (currentWordIdx < words.length - 1) {
+            setCurrentWordIdx(currentWordIdx + 1)
+            setSelectedSyllables([])
+            setSelectedAnswer(null)
+          } else {
+            setTimeout(() => setScreen('exercise'), 500)
+          }
+        }, 1500)
+        return  // Important : exit ici !
+      }
+      return  // Exit sans décrémenter
     }
 
-    if (isCorrect) {
+    if (isCorrect && selectedExercise !== 2) {
       setScore(score + 1)
     }
 
     setSelectedAnswer(answer)
 
-    setTimeout(() => {
-      if (currentWordIdx < words.length - 1) {
-        setCurrentWordIdx(currentWordIdx + 1)
-        setSelectedAnswer(null)
-      } else {
-        setTimeout(() => setScreen('exercise'), 500)
-      }
-    }, 1500)
+    if (selectedExercise !== 2) {
+      setTimeout(() => {
+        if (currentWordIdx < words.length - 1) {
+          setCurrentWordIdx(currentWordIdx + 1)
+          setSelectedAnswer(null)
+        } else {
+          setTimeout(() => setScreen('exercise'), 500)
+        }
+      }, 1500)
+    }
   }
 
   // ========== ÉCRAN 1 : GALERIE DE PROFILS ==========
@@ -471,6 +502,13 @@ const App: React.FC = () => {
               : 'Construis le mot'}
           </p>
 
+          {/* Compteur pour exercice 3 */}
+          {selectedExercise === 2 && (
+            <div style={{ marginBottom: '1rem', fontSize: '1.1rem', color: '#667eea', fontWeight: 'bold' }}>
+              Syllabes cliquées: {selectedSyllables.length} / {currentWord.syllables.length}
+            </div>
+          )}
+
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
@@ -514,6 +552,35 @@ const App: React.FC = () => {
                   {syl}
                 </button>
               ))
+            ) : selectedExercise === 2 ? (
+              currentWord.syllables.map((syl, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    if (!selectedAnswer || selectedAnswer === 'COMPLETE') {
+                      handleAnswer(syl)
+                    }
+                  }}
+                  disabled={selectedSyllables.includes(syl) && idx < selectedSyllables.length}
+                  style={{
+                    padding: '1rem',
+                    fontSize: '1rem',
+                    background: selectedSyllables.includes(syl)
+                      ? '#95E1D3'  // Vert si déjà cliqué
+                      : '#f0f0f0',
+                    border: selectedSyllables.length === idx
+                      ? '3px solid #FFE66D'  // Border jaune pour la prochaine syllabe attendue
+                      : '2px solid #667eea',
+                    borderRadius: '0.5rem',
+                    cursor: selectedSyllables.includes(syl) ? 'default' : 'pointer',
+                    fontWeight: 'bold',
+                    minHeight: '40px',
+                    opacity: selectedSyllables.includes(syl) && idx < selectedSyllables.length ? 0.5 : 1
+                  }}
+                >
+                  {syl}
+                </button>
+              ))
             ) : null}
           </div>
 
@@ -531,6 +598,12 @@ const App: React.FC = () => {
               {selectedExercise === 0 && parseInt(selectedAnswer) !== currentWord.syllables.length && `❌ Non, il y a ${currentWord.syllables.length} syllabe(s)`}
               {selectedExercise === 1 && selectedAnswer === currentWord.syllables[0] && '✅ Correct !'}
               {selectedExercise === 1 && selectedAnswer !== currentWord.syllables[0] && `❌ Non, c'est "${currentWord.syllables[0]}"`}
+              {selectedExercise === 2 && selectedAnswer === 'COMPLETE' && '✅ Mot complété avec succès !'}
+              {selectedExercise === 2 && selectedAnswer !== 'COMPLETE' && selectedSyllables.length > 0 && selectedSyllables.length < currentWord.syllables.length && (
+                <div>
+                  ✅ Bonne syllabe ! Syllabe suivante: "{currentWord.syllables[selectedSyllables.length]}"
+                </div>
+              )}
             </div>
           )}
 
