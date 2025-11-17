@@ -2,7 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './styles/index.css'
-import { Analytics } from '@vercel/analytics/react' 
+import { Analytics } from '@vercel/analytics/react'
+import * as Sentry from "@sentry/react"  // ← AJOUTER CETTE LIGNE !
+
+// Initialiser Sentry
+Sentry.init({
+  dsn: import.meta.env.VITE_SENTRY_DSN,
+  environment: import.meta.env.MODE,
+  tracesSampleRate: 1.0,
+})
 
 /**
  * Service Worker Registration
@@ -34,6 +42,6 @@ if ('serviceWorker' in navigator && !isDev) {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-     <Analytics /> 
+    <Analytics />
   </React.StrictMode>,
 )
