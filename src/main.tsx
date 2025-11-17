@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './styles/index.css'
 import { Analytics } from '@vercel/analytics/react'
-import * as Sentry from "@sentry/react"  // ← AJOUTER CETTE LIGNE !
+import * as Sentry from "@sentry/react"
 
-// Initialiser Sentry
+// Initialiser Sentry avec les variables d'environnement
 Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN,
-  environment: import.meta.env.MODE,
+  dsn: (import.meta.env as any).VITE_SENTRY_DSN,
+  environment: (import.meta.env as any).MODE,
   tracesSampleRate: 1.0,
 })
 
